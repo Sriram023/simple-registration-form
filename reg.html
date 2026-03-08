@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Registration Form</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body>
+    <h2>Simple Registration Form</h2>
+
+    <form id="registerForm">
+
+        <label>Name:</label>
+        <input type="text" placeholder="Enter your name" id="name">
+        <div id="nameError" class="error"></div>
+
+        <label>Email:</label>
+        <input type="text" placeholder="Enter you mail-id" id="email">
+        <div id="emailError" class="error"></div>
+
+        <label>Password:</label>
+        <input type="password" placeholder="Enter your password" id="password">
+        <div id="passwordError" class="error"></div>
+
+        <button type="submit" id="submitBtn" disabled>Submit</button>
+
+    </form>
+
+    <script>
+
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const submitBtn = document.getElementById("submitBtn");
+
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+
+        function validateForm() {
+
+            let valid = true;
+
+           
+            if (nameInput.value.trim() === "") {
+                nameError.textContent = "";   
+                valid = false;                
+            } else {
+                nameError.textContent = "";
+            }
+
+            
+            const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+            if (emailInput.value.trim() === "") {   
+                emailError.textContent = "";      
+                valid = false;                    
+            }
+            else if (!emailInput.value.match(emailPattern)) {
+                emailError.textContent = "Enter a valid email address";
+                valid = false;
+            }
+            else {
+                emailError.textContent = "";
+            }
+
+            
+            if (passwordInput.value === "") {     
+                passwordError.textContent = "";  
+                valid = false;                   
+            }
+            else if (passwordInput.value.length < 6) {
+                passwordError.textContent = "Password must be at least 6 characters";
+                valid = false;
+            }
+            else {
+                passwordError.textContent = "";
+            }
+
+            submitBtn.disabled = !valid;
+        }
+
+        nameInput.addEventListener("input", validateForm);
+        emailInput.addEventListener("input", validateForm);
+        passwordInput.addEventListener("input", validateForm);
+    </script>
+        
+</body>
+</html>

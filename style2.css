@@ -1,0 +1,27 @@
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 20px;
+            justify-items: center;
+        }
+
+        form {
+            width: 300px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px;
+            width: 105%;
+        }
